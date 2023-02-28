@@ -51,13 +51,15 @@
 <p>Open two terminal</p>
 <br />
 
-##### Tech-Stack
+<h2> Tech-Stack </h2>
+<ul>
+  <li>NextJs</li>
+  <li>Auth0</li>
+  <li>Strapi</li>
+  <li>Axios</li>
+  <li>TailwindCSS</li>
+</ul>
 
--Nextjs
--Auth0
--Strapi
--Axios
--TailwindCSS
 
 ### `develop` Start the backend server
 ```
