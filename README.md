@@ -47,9 +47,7 @@
 <p>In recommended, if user had listened 4 songs of one genres, songs in that genres will be shown </p>
 <br />
 
-<h2> To start application </h2>
-<p>Open two terminal</p>
-<br />
+
 
 <h2> Tech-Stack </h2>
 <ul>
@@ -60,6 +58,9 @@
   <li>TailwindCSS</li>
 </ul>
 
+<h2> To start application </h2>
+<p>Open two terminal</p>
+<br />
 
 ### `develop` Start the backend server
 ```
