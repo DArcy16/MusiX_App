@@ -51,6 +51,14 @@
 <p>Open two terminal</p>
 <br />
 
+### Tech-Stack
+<br />
+-Nextjs
+-Auth0
+-Strapi
+-Axios
+-TailwindCSS
+
 ### `develop` Start the backend server
 ```
 npm run develop
