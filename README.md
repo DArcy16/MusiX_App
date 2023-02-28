@@ -52,5 +52,18 @@
 <br />
 
 <code>develop</code><span>Start the backend server</span>
+```
+npm run develop
+# or
+yarn develop
+```
+
+### `dev` Start the client
+
+```
+npm run dev
+# or
+yarn dev
+```
 
 
