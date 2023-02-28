@@ -51,7 +51,7 @@
 <p>Open two terminal</p>
 <br />
 
-<code>develop</code><span>Start the backend server</span>
+### `develop` Start the backend server
 ```
 npm run develop
 # or
