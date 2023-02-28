@@ -51,8 +51,8 @@
 <p>Open two terminal</p>
 <br />
 
-### Tech-Stack
-<br />
+##### Tech-Stack
+
 -Nextjs
 -Auth0
 -Strapi
