@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "songs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::song.song",
+      "inversedBy": "categories"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

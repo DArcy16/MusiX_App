@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "favourites",
+  "info": {
+    "singularName": "favourite",
+    "pluralName": "favourites",
+    "displayName": "Favourite",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_name": {
+      "type": "string",
+      "required": true
+    },
+    "songs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::song.song",
+      "inversedBy": "favourites"
+    },
+    "singers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::singer.singer",
+      "inversedBy": "favourites"
+    }
+  }
+}

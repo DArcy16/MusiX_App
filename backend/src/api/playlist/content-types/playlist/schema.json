@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "playlists",
+  "info": {
+    "singularName": "playlist",
+    "pluralName": "playlists",
+    "displayName": "playlist",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "songs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::song.song",
+      "inversedBy": "playlists"
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}

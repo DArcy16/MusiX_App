@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "songs",
+  "info": {
+    "singularName": "song",
+    "pluralName": "songs",
+    "displayName": "Song",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "album": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::album.album",
+      "inversedBy": "songs"
+    },
+    "singers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::singer.singer",
+      "mappedBy": "songs"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "songs"
+    },
+    "playlists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::playlist.playlist",
+      "mappedBy": "songs"
+    },
+    "favourites": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::favourite.favourite",
+      "mappedBy": "songs"
+    },
+    "recents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::recent.recent",
+      "mappedBy": "songs"
+    }
+  }
+}

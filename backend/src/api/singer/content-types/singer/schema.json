@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "singers",
+  "info": {
+    "singularName": "singer",
+    "pluralName": "singers",
+    "displayName": "Singer",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "songs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::song.song",
+      "inversedBy": "singers"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "birthday": {
+      "type": "date",
+      "unique": false,
+      "required": false
+    },
+    "about": {
+      "type": "text",
+      "unique": true,
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "favourites": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::favourite.favourite",
+      "mappedBy": "singers"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}
