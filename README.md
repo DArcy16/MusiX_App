@@ -43,7 +43,7 @@
 </ul>
 
 <br />
-<p>In recently played, 16 songs that user had listended will be shown in latest order</p>
+<p>In recently played, 16 songs that user had listended recently will be shown in latest order</p>
 <p>In recommended, if user had listened 4 songs of one genres, songs in that genres will be shown </p>
 <br />
 
