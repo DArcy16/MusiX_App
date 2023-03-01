@@ -19,7 +19,9 @@ const SingleCarousel = ({ carousel, index, songs }) => {
       list: songs,
     });
     setPlaying(true);
-    addSongToRecent(song, recent, user.nickname);
+    if(user) {
+      addSongToRecent(song, recent, user.nickname);
+    }
   };
 
   return (
