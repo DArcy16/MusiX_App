@@ -4,7 +4,7 @@ import useFetch from "@/hooks/useFetch";
 import { useAppContext } from "@/lib/context";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import { RiGroupFill } from "react-icons/ri";
@@ -22,10 +22,10 @@ const Footer = () => {
   } = useAppContext();
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       getRecents(user.nickname);
     }
-  },[user])
+  }, [user]);
   // console.log(currentlyPlayingSong)
   const { data, loading, error } = useFetch(
     `/albums?populate[0]=image&filters[songs][id][$eq]=${currentlyPlayingSong.id}
@@ -62,7 +62,13 @@ const Footer = () => {
               <ImCross
                 className="absolute w-8 h-8 text-white/70 text-gray hover:scale-105 cursor-pointer animate-pulse"
                 onClick={() => {
-                  addSongToRecent(currentlyPlayingSong, recent, user.nickname);
+                  if (user) {
+                    addSongToRecent(
+                      currentlyPlayingSong,
+                      recent,
+                      user.nickname
+                    );
+                  }
                   setCurrentlyPlayingSong({
                     id: "",
                     list: [],
