@@ -9,6 +9,7 @@ import { MdDeleteForever } from "react-icons/md";
 import OtherPageLayout from "@/components/Layout/OtherPageLayout";
 import useFetch from "@/hooks/useFetch";
 import SongsList from "@/components/SongsList";
+import toast from "react-hot-toast"
 import { useAppContext } from "@/lib/context";
 
 export const getServerSideProps = withPageAuthRequired();
@@ -69,6 +70,7 @@ const SinglePlaylist = ({ user }) => {
               onClick={() => {
                 router.push('/profile')
                 deletePlaylist(getSpecificPlaylist[0].id);
+                toast.error(`Deleted !`, {duration : 1500} )
               }}
             />
           ) : null}
