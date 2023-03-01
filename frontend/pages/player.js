@@ -1,6 +1,8 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import {motion} from 'framer-motion'
 import { MdPlaylistAddCheck } from "react-icons/md";
 import { TbPlaylistOff } from "react-icons/tb";
 import { FaRandom } from "react-icons/fa";
@@ -13,7 +15,6 @@ import { GiSelfLove } from "react-icons/gi";
 import { GiEternalLove } from "react-icons/gi";
 import { SlVolume2 } from "react-icons/sl";
 import { MdPlaylistAdd } from "react-icons/md";
-import Link from "next/link";
 import { useAppContext } from "@/lib/context";
 import AddPlaylistModal from "@/components/AddPlaylistModal";
 import AddSongToPlaylistModal from "@/components/AddSongToPlaylistModal";
@@ -142,7 +143,12 @@ const Player = () => {
   }
 
   return (
-    <div className="lg:flex relative lg:items-center lg:justify-center w-[100vw] h-[100vh] min-h-[100vh]">
+    <motion.div
+      initial={{ opacity: 0 , y : '100%' }}
+      animate={{ opacity: 1, y : 0 }}
+      transition = {{duration : 1}}
+      className="lg:flex relative lg:items-center lg:justify-center w-[100vw] h-[100vh] min-h-[100vh]"
+    >
       <div className="relative flex flex-col w-full h-full items-center justify-enenly backdrop-blur-md lg:w-8/12 lg:items-center lg:justify-center lg:h-[80vh] lg:rounded-lg lg:flex-row">
         <Link href="/" className="absolute top-4 left-5">
           <MdKeyboardArrowDown className=" w-8 h-8 md:w-12 md:h-12  hover:text-gray-500/50 hover:scale-105" />
@@ -158,7 +164,9 @@ const Player = () => {
             onClick={() => addSongToFavourite(favourite, song.id)}
           />
         )}
-        <div className="flex flex-col items-center justify-center w-11/12 h-2/3 md:w-4/5 lg:h-full lg:w-1/2">
+        <motion.div
+          className="flex flex-col items-center justify-center w-11/12 h-2/3 md:w-4/5 lg:h-full lg:w-1/2"
+        >
           <div className="w-1/2">
             <img
               src={song?.album_cover}
@@ -175,7 +183,7 @@ const Player = () => {
             ))}
           </p>
           <hr className="w-full mt-4 lg:w-0" />
-        </div>
+        </motion.div>
         <div className="flex flex-col items-center justify-center gap-12 w-11/12 md:w-4/5 lg:h-full lg:w-1/2">
           <input
             type="range"
@@ -215,18 +223,19 @@ const Player = () => {
               className="w-10 h-10 hover:text-gray-500/50  text-white"
               onClick={() => handleSkipNext(song)}
             />
-            {
-              user ? <MdPlaylistAdd
-              className={`w-10 h-10 hover:text-gray-500/50 text-white`}
-              onClick={() => {
-                if (user) {
-                  setShowAddToPlaylistModal(true);
-                  setAddingSongId(song?.id);
-                }
-              }}
-            /> : 
-            <TbPlaylistOff className="w-7 h-7 text-gray-200/30" />
-            }
+            {user ? (
+              <MdPlaylistAdd
+                className={`w-10 h-10 hover:text-gray-500/50 text-white`}
+                onClick={() => {
+                  if (user) {
+                    setShowAddToPlaylistModal(true);
+                    setAddingSongId(song?.id);
+                  }
+                }}
+              />
+            ) : (
+              <TbPlaylistOff className="w-7 h-7 text-gray-200/30" />
+            )}
           </div>
           <div className="flex w-full lg:w-3/4 md:w-4/5 items-center justify-center gap-4">
             <SlVolume2 className="w-7 h-7" />
@@ -236,7 +245,7 @@ const Player = () => {
       </div>
       {showAddToPlaylistModal ? <AddSongToPlaylistModal /> : null}
       {showModal ? <AddPlaylistModal /> : null}
-    </div>
+    </motion.div>
   );
 };
 

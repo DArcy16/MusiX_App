@@ -2,9 +2,11 @@
 
 import { useAppContext } from "@/lib/context";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 import { GiSplitCross } from "react-icons/gi";
 
-const AddPlaylistModal = ({isProfilePage = false}) => {
+const AddPlaylistModal = ({ isProfilePage = false }) => {
   const { setShowModal, addingSongId, setShowAddToPlaylistModal } =
     useAppContext();
   const { addPlaylists } = useAppContext();
@@ -12,19 +14,22 @@ const AddPlaylistModal = ({isProfilePage = false}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    isProfilePage ? 
-    addPlaylists(playlistName) 
-    : 
-    addPlaylists(playlistName, addingSongId)
-    setShowAddToPlaylistModal(false)
-    
+    isProfilePage
+      ? addPlaylists(playlistName)
+      : addPlaylists(playlistName, addingSongId) &&
+        toast.success(`Added to ${playlistName}`);
+    setShowAddToPlaylistModal(false);
+
     e.target.value = "";
     setShowModal(false);
   };
 
-
   return (
-    <div className="custom-container absolute top-0 left-0 right-0 bottom-0 backdrop-blur-sm flex justify-center items-center">
+    <motion.div
+      initial={{  opacity: 0 }}
+      animate={{  opacity: 1 }}
+      className="custom-container absolute top-0 left-0 right-0 bottom-0 backdrop-blur-sm flex justify-center items-center"
+    >
       <form className="py-4 px-8 rounded-lg w-11/12 md:w-1/2 bg-black/30 backdrop-blur-lg text-center relative">
         <GiSplitCross
           onClick={() => setShowModal(false)}
@@ -52,7 +57,7 @@ const AddPlaylistModal = ({isProfilePage = false}) => {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

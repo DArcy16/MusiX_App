@@ -1,10 +1,18 @@
 import React from 'react'
 import Footer from '../Footer'
+import { easeInOut, motion} from 'framer-motion'
 
 const OtherPageLayout = ({children}) => {
   return (
     <>
-      <div className="custom-container">{children}</div>
+      <motion.div
+        initial={{ opacity : 0 }}
+        animate={{ opacity: 1}}
+        transition={{ duration: 0.5, easeInOut }}
+        className="custom-container"
+      >
+        {children}
+      </motion.div>
       <Footer />
     </>
   );

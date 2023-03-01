@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import toast from "react-hot-toast"
 import { IoIosArrowForward } from "react-icons/io";
 import { BsPlusSquareDotted } from "react-icons/bs";
 import { useRouter } from "next/router";
@@ -37,6 +38,7 @@ const PlaylistsList = ({ playlists, isProfilePage = false }) => {
                 ? () => router.push(`/profile/${playlist.slug}`)
                 : () => {
                     addSongToPlaylist(playlist.id);
+                    toast.success(`Added to ${playlist.name}`, {duration : 1500})
                     setShowAddToPlaylistModal(false);
                   }
             }

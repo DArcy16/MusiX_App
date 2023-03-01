@@ -4,6 +4,7 @@ import { useAppContext } from "@/lib/context";
 import Link from "next/link";
 import React from "react";
 import { AiFillCheckCircle} from "react-icons/ai"
+import {motion} from 'framer-motion'
 
 const ArtistsList = ({ artists, loading, error, isArtistsPage = false, isFollowingPage = false, favourite }) => {
   const {removeArtistFromFavourite} = useAppContext();
@@ -21,7 +22,13 @@ const ArtistsList = ({ artists, loading, error, isArtistsPage = false, isFollowi
         </div>
       ) : (
         artists?.map((artist) => (
-          <div key={artist.id} className="w-1/3 md:w-1/4 lg:w-1/5 mb-4 mx-auto">
+          <motion.div
+            layout
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            key={artist.id}
+            className="w-1/3 md:w-1/4 lg:w-1/5 mb-4 mx-auto"
+          >
             <div
               className="relative w-full h-[28vw] md:h-[23vw] lg:h-[187px] rounded-full"
               key={artist.id}
@@ -47,7 +54,7 @@ const ArtistsList = ({ artists, loading, error, isArtistsPage = false, isFollowi
                 {artist.name}
               </h2>
             ) : null}
-          </div>
+          </motion.div>
         ))
       )}
     </div>
